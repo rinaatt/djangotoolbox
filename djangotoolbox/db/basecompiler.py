@@ -553,7 +553,10 @@ class NonrelCompiler(SQLCompiler):
             if name == 'pk':
                 name = opts.pk.name
 
-            field_ordering.append((opts.get_field(name), ascending))
+            if '.' in name:
+                field_ordering.append((RawFakeField(name), ascending))
+            else:
+                field_ordering.append((opts.get_field(name), ascending))
         return field_ordering
 
 

@@ -26,6 +26,17 @@ class _FakeModel(object):
         setattr(self, field.attname, value)
 
 
+class RawFakeField(object):
+    primary_key = False
+
+    def __init__(self, name):
+        self.name = name
+        self.column = name
+
+    def get_internal_type(self):
+        return 'RawField'
+
+
 class RawField(models.Field):
     """
     Generic field to store anything your database backend allows you
