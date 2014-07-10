@@ -11,6 +11,7 @@ from django.db.models.sql.where import AND, OR
 from django.db.utils import DatabaseError, IntegrityError
 from django.utils.tree import Node
 from django.db import connections
+from ..fields import RawFakeField
 
 try:
     from django.db.models.sql.where import SubqueryConstraint
